@@ -2,6 +2,6 @@
 /.idea
 *.class
 *.log
-/build
-/settings.gradle
-/gradle/wrapper
+build
+settings.gradle
+gradle/wrapper
