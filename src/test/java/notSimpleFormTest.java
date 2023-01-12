@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class notSimpleFormTest
@@ -17,6 +18,8 @@ public class notSimpleFormTest
     void fillForm(){
         //Заполнение
         Selenide.open("https://demoqa.com/automation-practice-form");
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
         Selenide.$("#firstName").setValue("John");
         Selenide.$("#lastName").setValue("Doe");
         Selenide.$("#userEmail").setValue("tessting@gmail.com");
