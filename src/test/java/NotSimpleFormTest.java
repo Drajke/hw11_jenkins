@@ -6,9 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static com.codeborne.selenide.Selenide.sleep;
 
-public class notSimpleFormTest
+public class NotSimpleFormTest
 {
     @BeforeAll
     static void beforeAll(){
