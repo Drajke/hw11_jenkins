@@ -1,11 +1,15 @@
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
+@Tag("faker")
 public class FakerFormTest extends TestBase
 {
     TestData testData = new TestData();
 
     @Test
     void fillForm(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
 //        String fname = "John";
 //        String lname = "Doe";
 //        String email = "tessting@gmail.com";
