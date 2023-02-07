@@ -1,15 +1,15 @@
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+
+import static io.qameta.allure.Allure.step;
+
 @Tag("faker")
-public class FakerFormTest extends TestBase
+public class FakerFormRemoteDriverTest extends TestBase
 {
     TestData testData = new TestData();
-
     @Test
     void fillForm(){
-        SelenideLogger.addListener("allure", new AllureSelenide());
+
 //        String fname = "John";
 //        String lname = "Doe";
 //        String email = "tessting@gmail.com";
@@ -23,8 +23,11 @@ public class FakerFormTest extends TestBase
 //        String city = "Panipat";
 
 
-        //Заполнение
+        step("Открываем страницу:", () -> {
         registrationPage.openPage();
+        });
+
+        step("Заполняем форму случайными данными:", () -> {
         registrationPage.setFirstName(testData.firstName);
         registrationPage.setLastName(testData.lastName);
         registrationPage.setEmail(testData.email);
@@ -38,8 +41,9 @@ public class FakerFormTest extends TestBase
         registrationPage.setState(testData.state);
         registrationPage.setCity(testData.city);
         registrationPage.clckSubmit();
+        });
 
-        //Проверка
+        step("ОПроверяем результат заполнения:", () -> {
         regResult.verifyName(testData.firstName,testData.lastName);
         regResult.verifyEmail(testData.email);
         regResult.verifyGender(testData.gender);
@@ -50,6 +54,6 @@ public class FakerFormTest extends TestBase
         regResult.verifyFile(testData.ufile);
         regResult.verifyStreet(testData.address);
         regResult.verifyStateCity(testData.state,testData.city);
-
+        });
     }
 }
