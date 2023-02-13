@@ -23,20 +23,27 @@ repositories {
 
 dependencies {
     testImplementation (
-            "com.codeborne:selenide:6.3.5",
-            "org.junit.jupiter:junit-jupiter:5.8.2",
-            "com.github.javafaker:javafaker:1.0.2"
+            "com.codeborne:selenide:6.9.0",
+            "org.junit.jupiter:junit-jupiter:5.9.1",
+            "com.github.javafaker:javafaker:1.0.2",
+            "org.slf4j:slf4j-simple:1.7.32"
             )
     implementation 'io.qameta.allure:allure-selenide:2.20.1'
     implementation 'com.codeborne:selenide:6.11.2'
 }
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
 
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-}
-
-test {
-    useJUnitPlatform()
 }
 
 task faker_test(type: Test) {
