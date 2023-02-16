@@ -16,13 +16,13 @@ public class TestBase {
     RegResult regResult = new RegResult();
     @BeforeAll
     static void beforeAll(){
-//        Configuration.browserSize = "1920x1080";
+
         Configuration.browserSize = System.getProperty("sizeBrowser", "1920x1080");
-//        Configuration.browser = "chrome";
+
         Configuration.browser = System.getProperty("browser", "chrome");
-//        Configuration.browserVersion = "100.0";
+
         Configuration.browserVersion = System.getProperty("versionBrowser", "100");
-//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
         Configuration.remote = System.getProperty("urlRemote","https://user1:1234@selenoid.autotests.cloud/wd/hub");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
